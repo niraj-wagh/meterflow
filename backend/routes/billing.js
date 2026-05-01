@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+const { getBillingHistory, getCurrentBilling, getInvoice, upgradePlan } = require('../controllers/billingController');
+const { protect } = require('../middleware/auth');
+router.use(protect);
+router.get('/', getBillingHistory);
+router.get('/current', getCurrentBilling);
+router.post('/upgrade', upgradePlan);
+router.get('/:id', getInvoice);
+module.exports = router;
